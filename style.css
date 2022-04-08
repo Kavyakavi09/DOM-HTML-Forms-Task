@@ -17,14 +17,19 @@ h4::first-letter{
 }
 
 .btn{
-  transition-duration: 3s;
-    transition-timing-function: ease;
+  transition: opacity 2s;
+  transition: background-color 2s;
+  
 }
 .btn:hover {
     background-color: #fff;
     border: 2px solid blue;
-    color: black;
+    color: blue;
    
+}
+
+.btn:active{
+opacity: 0.5;
 }
 
 .bg-hero {
@@ -59,6 +64,8 @@ h4::first-letter{
     background-size: cover;
     z-index: 1;
    border-radius: 30px;
+   outline:none;
+   border: none;
   }
   
    .bg-hero1:before {
