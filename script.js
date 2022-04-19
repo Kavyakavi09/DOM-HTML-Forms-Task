@@ -8,17 +8,6 @@ let clickBtn = document.getElementById("submit");
 clickBtn.addEventListener("click", clickHandler);
 
 function clickHandler(){
-    let tbl = document.getElementById("tbody");
-    let row = tbl.insertRow();
-    var cell1 = row.insertCell();
-    var cell2 = row.insertCell();
-    var cell3 = row.insertCell();
-    var cell4 = row.insertCell();
-    var cell5 = row.insertCell();
-    var cell6 = row.insertCell();
-    var cell7 = row.insertCell();
-    var cell8 = row.insertCell();
-
   let firstName = document.getElementById("first-name").value;
   let lastName=document.getElementById("last-name").value;
   let address=document.getElementById("address").value;
@@ -29,66 +18,78 @@ function clickHandler(){
   let country =document.getElementById("country").value;
 
 
+  var gendervalue=[];
+  for (let i = 0; i < gender.length; i++) {
+      if (gender[i].checked==true) {
+          gendervalue.push(gender[i].value);
+          console.log(gendervalue);
+      }
+  }
+
+  var array = [];
+for (var i = 0; i < chkbx.length; i++) {
+    array.push(chkbx[i].value);
+    }
+
+
+
   if(!firstName)
    {
        alert("Name cannot be Empty. Please! Enter the Firstname.")
-       return false;
+     
    } 
    else if(!lastName)
    {
        alert("Name cannot be Empty. Please! Enter the Lastname.");
-       return false;
+      
    }
-  else if(!address)
+   else if(gendervalue.length != 1)
+   {
+       alert("Gender cannot be Empty. Please!!! select the gender.");
+     
+   }
+     
+  else if (array.length < 2) {
+    alert("select atleast 2 food items");
+    
+  }
+   else if(!address)
    {
        alert("Address cannot be Empty. Please! Enter the Address.");
-       return false;
+     
    }
    else if(!pincode)
    {
        alert("Pincode cannot be Empty. Please! Enter the Pincode.");
-       return false;
+      
    }
-   else if(pincode<6)
+   else if(pincode.length!==6)
    {
-       alert("Pincode Enter the valid Pincode.");
-       return false;
+       alert("Enter the valid Pincode.");
+    
    }
-   else if(!state)
+ else if(!state)
    {
        alert("State cannot be Empty. Please! Enter the State.");
-       return false;
+      
    }
-   else if(!country)
+   else if (!country)
    {
        alert("Country cannot be Empty. Please! Enter the Country.");
-       return false;
+     
    }
+ else{
+    let tbl = document.getElementById("tbody");
+    let row = tbl.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+    var cell8 = row.insertCell(7);
 
-   var gendervalue;
-   for (let i = 0; i < gender.length; i++) {
-       if (gender[i].checked) {
-           console.log(gender[i].checked);
-           gendervalue = gender[i].value;
-           console.log(gendervalue);
-       }
-   }
-   
-   if(gender[0].checked === false && gender[1].checked === false && gender[2].checked === false)
-   {
-       alert("Gender cannot be Empty. Please!!! select the gender.");
-       return false;
-   }
-  
-   if (chkbx.length < 2) {
-    alert("select atleast 2 food items");
-    return false;
-  }
-
-var array = [];
-for (var i = 0; i < chkbx.length; i++) {
-    array.push(chkbx[i].value);
-    }
 cell1.innerHTML = firstName;
 cell2.innerHTML = lastName;
 cell3.innerHTML = address;
@@ -100,6 +101,7 @@ cell8.innerHTML = country;
 alert("Thank You, Form's data is saved.!!!");
 
 form.reset(); //reset the form if every data is collected.
+ }
 }
 
 
